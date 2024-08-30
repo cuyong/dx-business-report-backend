@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wjc.dxweprogram.mapper.DailyReportMapper">
+    <insert id="insertBatchSomeColumn">
+        INSERT INTO DailyReport (weekly_report_id, report_date, declared_count, actual_count, created_at, updated_at)
+        VALUES
+        <foreach collection="dailyReports" item="item" index="index" separator=",">
+            (#{item.weeklyReportId}, #{item.reportDate}, 0, 0, NOW(), NOW())
+        </foreach>
+    </insert>
+</mapper>
